@@ -5,26 +5,33 @@ import '../utils/nav-elements';
 
 const companyLocalCheckbox = document.querySelector('#local') as HTMLInputElement;
 const companyAdress = document.querySelector('.company-adress') as HTMLDivElement;
-
-const companyStreet = document.querySelector('#company-street') as HTMLParagraphElement;
-const companyHomeNumber = document.querySelector('#company-home-number') as HTMLParagraphElement;
-const companyCityAdress = document.querySelector('#company-city') as HTMLParagraphElement;
-const companyCode = document.querySelector('#company-code') as HTMLParagraphElement;
-
+const companyStreet = document.querySelector('#company-street') as HTMLSpanElement;
+const companyHomeNumber = document.querySelector('#company-home-number') as HTMLSpanElement;
+const companyCityAdress = document.querySelector('#company-city') as HTMLSpanElement;
+const companyCode = document.querySelector('#company-code') as HTMLSpanElement;
 const searchProvidersBtn = document.querySelector('#search-providers') as HTMLButtonElement;
-
-export let date = new Date();
-export const allTd: NodeListOf<HTMLTableDataCellElement> = document.querySelectorAll('tbody td');
 
 const customerHomeCheckbox = document.querySelector('#client-home') as HTMLInputElement;
 const clientAdressBox = document.querySelector('.client-adress') as HTMLDivElement;
 
+const clientStreet = document.querySelector('#client-street') as HTMLInputElement;
+const clientHouse = document.querySelector('#client-house') as HTMLInputElement;
+const clientCity = document.querySelector('#client-city') as HTMLInputElement;
+const confirmLocalBtn = document.querySelector('#confirm-local') as HTMLInputElement;
+const confirmAdressBtn = document.querySelector('#confirm-adress') as HTMLButtonElement;
+console.log(confirmLocalBtn);
+
+
+export let date = new Date();
+export const allTd: NodeListOf<HTMLTableDataCellElement> = document.querySelectorAll('tbody td');
 export const footerYear = document.querySelector('.footer__current-year') as HTMLSpanElement;
 export const currnetYear = new Date().getFullYear();
 
 if (footerYear && currnetYear) {
 	footerYear.textContent = currnetYear.toString();
 }
+
+
 
 const calendarCheckboxCheck = () => {
 	if (customerHomeCheckbox.checked) {
@@ -33,6 +40,9 @@ const calendarCheckboxCheck = () => {
 	} else if (companyLocalCheckbox.checked) {
 		companyAdress.style.display = 'block';
 		clientAdressBox!.style.display = 'none';
+		clientStreet.value = ""
+		clientHouse.value = ""
+		clientCity.value = ""
 	}
 };
 
@@ -212,10 +222,6 @@ function checkOneLocationCheckbox(event: Event) {
 	}
 }
 
-const clientStreet = document.querySelector('#client-street') as HTMLInputElement;
-const clientHouse = document.querySelector('#client-house') as HTMLInputElement;
-const clientCity = document.querySelector('#client-city') as HTMLInputElement;
-const confirmAdressBtn = document.querySelector('#confirm-adress') as HTMLButtonElement;
 
 const checkClientAdressValidation = () => {
 	if (clientStreet.value === '') {
@@ -287,6 +293,33 @@ document.addEventListener('DOMContentLoaded', () => {
 	if (userName) {
 		userName.textContent = localStorage.getItem('name');
 	}
+
+
+	if (confirmAdressBtn) {
+		confirmAdressBtn.addEventListener('click', ()=>{
+	
+				localStorage.setItem('adressStreet', clientStreet.value);
+				localStorage.setItem('adressHouse', clientHouse.value);
+				localStorage.setItem('adressCity', clientCity.value);
+	
+				console.log(localStorage.getItem('clientStreet'));
+	
+			})
+		
+	}
+
+	if (confirmLocalBtn) {
+		confirmLocalBtn.addEventListener('click', ()=> {
+			localStorage.setItem('adressStreet', companyStreet.textContent ?? "");
+			localStorage.setItem('adressHouse', companyHomeNumber.textContent ?? "");
+			localStorage.setItem('adressCity', companyCityAdress.textContent ?? "");
+			console.log(localStorage.getItem('adressStreet'));
+
+		})
+	}
+	
+
+
 	localStorage.getItem('name');
 	localStorage.getItem('selectedOption');
 	localStorage.getItem('companyStreet');

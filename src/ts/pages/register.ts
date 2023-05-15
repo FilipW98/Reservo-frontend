@@ -83,7 +83,6 @@ const emailCustomerData = document.querySelector('.email-customer-data') as HTML
 export const companyNamelabel = document.createElement('label');
 companyNamelabel.htmlFor = 'company-name';
 companyNamelabel.innerText = 'Nazwa firmy';
-// export const companyInput = document.createElement('input');
 companyInput.className = 'input';
 companyInput.id = 'company-name';
 companyInput.name = 'company-name';
@@ -93,24 +92,11 @@ const servicesLabel = document.createElement('label');
 servicesLabel.htmlFor = 'services';
 servicesLabel.innerText = 'Świadczone usługi';
 
-// export const companyEmail = document.createElement('input');
 const companyEmailLabel = document.createElement('label');
 companyEmailLabel.textContent = 'E-mail';
 const emailCompanyData = document.createElement('div');
 emailCompanyData.classList.add('basic-info-data');
 emailCompanyData.classList.add('email-company-data');
-
-// export const inputsArr = [
-// 	nameInput,
-// 	surnameInput,
-// 	numberInput,
-// 	emailCustomerInput,
-// 	passwordInput,
-// 	repeatInput,
-// 	select,
-// 	companyInput,
-// 	companyEmail,
-// ];
 
 let checkCompanyInputChecked = false;
 const addInputs = () => {
@@ -121,7 +107,6 @@ const addInputs = () => {
 		companyEmail.id = 'email-company';
 		companyEmail.type = 'text';
 		companyEmail.classList.add('input');
-
 		emailCompanyData.append(companyEmailLabel, companyEmail);
 		basicInfoContact.append(emailCompanyData);
 		basicInfoData.append(companyNamelabel, companyInput);

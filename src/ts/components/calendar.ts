@@ -3,11 +3,14 @@ export{}
 const daysTag = document.querySelector(".days");
 const currentDate = document.querySelector(".current-date");
 const prevNextIcon = document.querySelectorAll(".icons i");
-let date = new Date(),
-currYear = date.getFullYear(),
-currMonth = date.getMonth();
+let date = new Date();
+let currYear = date.getFullYear();
+let currMonth = date.getMonth();
+
 const months = ["Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec", "Lipiec",
               "Sierpień", "Wrzesień", "Październik", "Listopad", "Grudzień"];
+       
+ const currRealMonth = months[currMonth];
 const renderCalendar = () => {
     let firstDayofMonth = new Date(currYear, currMonth, 1).getDay(), 
     lastDateofMonth = new Date(currYear, currMonth + 1, 0).getDate(), 
@@ -89,19 +92,27 @@ const handleClick = (e:Event) => {
 	const today = new Date();
 	const pickedDate = new Date(date.getFullYear(), date.getMonth(), pickedDay);
 
-	if ((li.textContent !== '' && pickedDate.getDate() == today.getDate()) || pickedDate > today) {
-		if(hoursBoxInfo !== null){
-			hoursBoxInfo.textContent = pickedDate.getDate() + " " + months[date.getMonth()]
+	if (li.textContent !== '' && !li.classList.contains('inactive')  &&(pickedDate.getDate() == today.getDate() || pickedDate > today && currentDate?.textContent?.includes(currRealMonth)) ) {
+		if(hoursBoxInfo){
+			hoursBoxInfo.textContent = pickedDate.getDate() + " " + currentDate?.textContent?.slice(0,currentDate?.textContent.length - 4);
 			hoursContainer!.style.display = 'flex';
             iconsArr.forEach(icon => {
                 icon!.style.display = "block";
             })            
 		}
-	} else if (pickedDate < today ) {
+	} if (li.textContent !== '' && !li.classList.contains('inactive') && !currentDate?.textContent?.includes(currRealMonth)) {
+        if(hoursBoxInfo){
+			hoursBoxInfo.textContent = pickedDate.getDate() + " " + currentDate?.textContent?.slice(0,currentDate?.textContent.length - 4);
+			hoursContainer!.style.display = 'flex';
+            iconsArr.forEach(icon => {
+                icon!.style.display = "block";
+            })            
+		}
+    }  else if (pickedDate < today && !li.classList.contains('inactive')  && currentDate?.textContent?.includes(currRealMonth) ) {
 		alert('Ten dzień już minął!');
         li.classList.remove('active2');
 		return;
-	}
+	} 
 };
 
 	const exitIcon = document.querySelector('.fa-times');
