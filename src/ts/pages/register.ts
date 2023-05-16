@@ -2,6 +2,7 @@ export {};
 
 import {
 	nameInput,
+	providerName,
 	surnameInput,
 	numberInput,
 	companyEmail,
@@ -14,12 +15,12 @@ import {
 	termsError,
 	termsBox,
 	inputsArr,
+	surnameLabel,
 } from '../utils/constants';
 import { inputsValidation } from '../validation/inputsValidation';
 import { clearAllErrors } from '../validation/clear-all-errors';
 import { dataInputsCreator, companyAdress } from '../utils/new-elements';
 import { toggleError, removeError } from '../validation/toggle-error';
-// import './nav-elements';
 
 export const customerInput = document.querySelector('#user') as HTMLInputElement;
 export const checkCompanyInput = document.querySelector('#company') as HTMLInputElement;
@@ -68,17 +69,26 @@ export const inputsEvents = (event: Event) => {
 };
 
 export const basicInfo = document.querySelector('.basic-info') as HTMLElement;
+export const basicInfoNames = document.querySelector('.basic-info-names') as HTMLElement;
+
 export const basicInfoCompany = document.createElement('div');
 basicInfoCompany.className = 'basic-info-company';
-console.log(basicInfoCompany);
-console.log('1');
 export const basicInfoData = document.createElement('div');
 basicInfoData.className = 'basic-info-data';
 export const basicInfoData2 = document.createElement('div');
 basicInfoData2.className = 'basic-info-data';
+export const basicInfoData3 = document.createElement('div');
+basicInfoData3.className = 'basic-info-data';
+export const surnameInputData = document.querySelector('.surname-data') as HTMLDivElement;
+surnameInputData.className = 'basic-info-data';
 
 const basicInfoContact = document.querySelector('.basic-info-contact') as HTMLElement;
 const emailCustomerData = document.querySelector('.email-customer-data') as HTMLElement;
+const nameCustomerData = document.querySelector('.name-customer-data') as HTMLElement;
+
+const providerNameLabel = document.createElement('label') as HTMLLabelElement;
+providerNameLabel.htmlFor = 'provider-name';
+providerNameLabel.innerText = 'Imię';
 
 export const companyNamelabel = document.createElement('label');
 companyNamelabel.htmlFor = 'company-name';
@@ -104,20 +114,27 @@ const addInputs = () => {
 		checkCompanyInputChecked = true;
 		emailCustomerInput.remove();
 		emailCustomerData.remove();
+		nameCustomerData.remove();
 		companyEmail.id = 'email-company';
 		companyEmail.type = 'text';
 		companyEmail.classList.add('input');
+		basicInfoData3.append(providerNameLabel, providerName);
+		surnameInputData.append(surnameInput);
+		basicInfoNames.append(basicInfoData3, surnameInputData);
 		emailCompanyData.append(companyEmailLabel, companyEmail);
 		basicInfoContact.append(emailCompanyData);
 		basicInfoData.append(companyNamelabel, companyInput);
 		basicInfoData2.append(servicesLabel, select);
 		basicInfoCompany.append(basicInfoData, basicInfoData2);
-		basicInfo.append(basicInfoCompany, companyAdress);
+		basicInfo.append(basicInfoNames, basicInfoContact, basicInfoCompany, companyAdress);
 		clearAllErrors(termsBox, termsError);
 	} else if (customerInput.checked) {
 		checkCompanyInputChecked = false;
 		companyEmail.remove();
 		emailCompanyData.remove();
+		basicInfoData3.remove();
+		surnameInputData.append(surnameLabel, surnameInput);
+		basicInfoNames.append(nameCustomerData, surnameInputData);
 		emailCustomerData.append(emailCustomerInput);
 		basicInfoContact.append(emailCustomerData);
 		basicInfo.append(basicInfoContact);
@@ -131,11 +148,10 @@ export type cityInputValue = string;
 
 const handleEvent = (e: Event) => {
 	const target = e.target as HTMLElement;
-
 	if (e.type === 'input') {
 		if (
 			target.matches(
-				'#name, #surname, #number, #email, #email-company, #company-name, #password, #repeat, #phone, #city,#code,#home,#street'
+				'#name, #provider-name, #surname, #number, #email, #email-company, #company-name, #password, #repeat, #phone, #city,#code,#home,#street'
 			)
 		) {
 			if (target instanceof HTMLInputElement) {
@@ -187,9 +203,13 @@ document.addEventListener('DOMContentLoaded', function () {
 				const selectedOptionText = selectElement.options[selectElement.selectedIndex].textContent;
 				localStorage.setItem('selectedOptionText', selectedOptionText!);
 			}
-			localStorage.setItem('name', nameInput.value);
 			localStorage.getItem('selectedOptionText');
+
+			if (customerInput.checked) {
+				localStorage.setItem('customerName', nameInput.value);
+			}
 			if (checkCompanyInput.checked) {
+				localStorage.setItem('providerName', providerName.value);
 				localStorage.setItem('companyCity', cityInput.value);
 				localStorage.setItem('companyStreet', streetInput.value);
 				localStorage.setItem('companyHome', homeInput.value);
@@ -203,7 +223,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	const adressInputsArr = [streetInput, homeInput, cityInput, codeInput];
 	const inputsArrCompany = [
-		nameInput,
 		surnameInput,
 		numberInput,
 		passwordInput,
@@ -211,6 +230,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		select,
 		companyInput,
 		companyEmail,
+		providerName,
 	];
 	const newInputsArrCompany = inputsArrCompany.concat(adressInputsArr);
 
@@ -230,7 +250,6 @@ document.addEventListener('DOMContentLoaded', function () {
 			newInputsArr.every(input => !input.classList.contains('red-input')) &&
 			termsInput.checked
 		) {
-			console.log('przenosze do customer');
 			window.location.assign('./customer-panel.html');
 		}
 	}

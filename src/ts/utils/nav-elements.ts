@@ -46,7 +46,6 @@ const handleObserver = () => {
 	}
 
 	if(window.innerWidth <= 576 && calendarSection.offsetTop <= window.scrollY ) {
-		console.log('szerokość 567');
 		burgerBtnSpans.forEach(span => {
 			span.style.backgroundColor = 'black';
 		});

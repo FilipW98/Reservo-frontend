@@ -48,10 +48,8 @@ const dayAcitveClassToggler = () => {
         });
 
             if(li.className === 'inactive' || li.className === 'active'){
-                console.log('wbijam');
                  li.classList.remove('active2');
              } else{
-                console.log('dodaje klase');
                  li.classList.add('active2');
                }
 		});

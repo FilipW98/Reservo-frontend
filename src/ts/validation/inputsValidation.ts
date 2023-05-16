@@ -2,6 +2,7 @@ export {};
 
 import {
 	nameInput,
+	providerName,
 	surnameInput,
 	numberInput,
 	companyEmail,
@@ -21,6 +22,9 @@ export const inputsValidation = () => {
 	if (nameInput.value === '') {
 		toggleError(nameInput, true, 'Podaj imię');
 	}
+	if(providerName.value === ''){
+		toggleError(providerName, true, 'Podaj imię');
+	}
 	if (surnameInput.value === '') {
 		toggleError(surnameInput, true, 'Podaj nazwisko');
 	}
@@ -33,7 +37,6 @@ export const inputsValidation = () => {
 	if (!regExEmail.test(emailCustomerInput.value)) {
 		toggleError(emailCustomerInput, true, 'Podaj adres e-mail');
 	}
-
 	if (passwordInput.value.length < 8) {
 		toggleError(passwordInput, true, 'Hasło musi zawierać min. 8 znaków');
 	}
