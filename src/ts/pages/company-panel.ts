@@ -13,7 +13,9 @@ const street = document.querySelector('#your-visits__street') as HTMLParagraphEl
 const house = document.querySelector('#your-visits__home-number') as HTMLParagraphElement;
 const city = document.querySelector('#your-visits__city') as HTMLParagraphElement;
 
-const meetingDate = document.querySelector('#your-visits__date-hour') as HTMLSpanElement;
+
+const meetingDay = document.querySelector('#your-visits__date-day') as HTMLElement;
+const meetingHour = document.querySelector('#your-visits__date-hour') as HTMLSpanElement;
 
 const heroCompanyImg = document.querySelector('.hero-img') as HTMLParagraphElement;
 
@@ -32,7 +34,7 @@ if (userMobileNameNav) {
 	userMobileNameNav.textContent = localStorage.getItem('providerName');
 }
 
-localStorage.getItem('serviceDay');
+
 localStorage.getItem('selectedOption');
 localStorage.getItem('companyStreet');
 localStorage.getItem('companyHome');
@@ -52,8 +54,11 @@ if (house) {
 if (city) {
 	city.textContent = 'Miasto:' + localStorage.getItem('adressCity');
 }
-if (meetingDate) {
-	meetingDate.textContent = '';
+if(meetingDay){
+	meetingDay.textContent =  localStorage.getItem('serviceDay');
+}
+if (meetingHour) {
+	meetingHour.textContent =  localStorage.getItem('serviceHour');
 }
 
 const combIcon = document.querySelector('.comb') as HTMLElement;

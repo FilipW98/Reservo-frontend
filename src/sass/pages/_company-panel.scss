@@ -219,8 +219,13 @@
 
     &__date-exact{
 		@include boxTitle;
+        font-weight: normal;
         background-color: rgba(65, 105, 225, 0.781);
         font-size: 2.2rem;
+
+    }
+    #your-visits__date-day,#your-visits__date-hour{
+        font-weight: bold;
     }
 }
 

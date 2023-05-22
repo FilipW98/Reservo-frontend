@@ -18,7 +18,7 @@ if ( burgerBtn) {
 }
 
 export const burgerBtnSpans = document.querySelectorAll('#burger-btn span') as NodeListOf<HTMLElement>;
-const calendarSection = document.querySelector('.calendar-section') as HTMLElement;
+const calendarSection = document.querySelector('.customer-calendar') as HTMLElement;
 
 const handleObserver = () => {
 	const currentSection = window.scrollY;
@@ -36,7 +36,6 @@ const handleObserver = () => {
 			});
 		}	
 	})
-
 	if (calendarSection) {
 		if(calendarSection.offsetTop <= currentSection + 100){
 			burgerBtnSpans.forEach(span => {
@@ -44,12 +43,15 @@ const handleObserver = () => {
 			});
 		}
 	}
-
-	if(window.innerWidth <= 576 && calendarSection.offsetTop <= window.scrollY ) {
-		burgerBtnSpans.forEach(span => {
-			span.style.backgroundColor = 'black';
-		});
+	if (window.location.href.includes('customer-panel')){
+		if (calendarSection) {
+			if(window.innerWidth <= 576 && calendarSection.offsetTop <= window.scrollY ) {
+				burgerBtnSpans.forEach(span => {
+					span.style.backgroundColor = 'black';
+				});
+				}
 		}
+	}
 	};
 
 	window.addEventListener('scroll', handleObserver);

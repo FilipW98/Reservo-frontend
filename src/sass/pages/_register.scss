@@ -147,6 +147,81 @@ flex-wrap: wrap;
 	display: block;
 }
 
+@media (max-width: 450px) {
+	html{
+		min-width: 100vw;
+        .register-body {
+			display: block;
+			min-width: 100vw;
+           .wrapper-register{
+               #form {
+				   background-color: #fdfbfba7;
+					padding: 1.5em;
+
+
+				   h1{
+					position: relative;
+					margin-top: 1.4em;
+					margin-bottom: 2em;
+					z-index: 1;
+					font-weight: lighter;
+					text-transform: capitalize;
+					margin-left: 1em;
+					margin-right: 1em;
+				}
+				
+				h1::before{
+					position: absolute;
+					content: "";
+					top: -12px;
+					left: 0px;
+					width: 100%;
+					height: 60px;
+					box-shadow: 3px 5px 8px 2px rgba(27, 75, 131, 0.781);
+					border-radius: 8px;
+					background-color: $buttonColor;
+					z-index: -1;
+				   }
+                   label{
+                    font-size: 1.9rem;
+                   }
+                   input{
+                    font-size: 1.6rem;
+					box-shadow: 2px 2px 5px 0px rgba(27, 75, 131, 0.781);
+                   }
+                   #register{
+                    width: 80%;
+					margin-top: 2em;
+					font-size: 1.9rem;
+					box-shadow: 2px 2px 10px 1px rgba(27, 75, 131, 0.781);
+                   }
+					.basic-info-names,.basic-info-contact,.password-box{
+						flex-direction: column;
+					}
+					.basic-info-data{
+						width: 100%;
+					}
+					.password-box-password{
+						width: 100%;
+						.info::before{
+							left: -170px;
+						}
+					}
+					.basic-info{
+						.basic-info-company{
+							flex-direction: column;
+							select{
+						box-shadow: 2px 2px 5px 1px rgba(27, 75, 131, 0.781);
+
+							}
+						}
+					}
+               }
+           }
+        }
+    }
+}
+
 @media(max-width: 350px){
 	html{
 		.register-body{
@@ -156,7 +231,6 @@ flex-wrap: wrap;
 					h1{
 						font-size: 2.8rem;
 					}
-
 					#register{
 						background-color: rgb(58, 161, 252);
 						font-size: 1.8rem;
@@ -177,92 +251,3 @@ flex-wrap: wrap;
 			}
 		}
 	}
-
-
-
-@media (max-width: 450px) {
-	html{
-		min-width: 100vw;
-        .register-body {
-			display: block;
-			min-width: 100vw;
-           .wrapper-register{
-               #form {
-				   background-color: #fdfbfba7;
-					padding: 1.5em;
-
-
-				   h1{
-					position: relative;
-					margin-top: 1.4em;
-					margin-bottom: 2em;
-					z-index: 1;
-					color: #000000cf;
-					font-weight: lighter;
-					font-weight: normal;
-					text-transform: capitalize;
-					margin-left: 1em;
-					margin-right: 1em;
-				}
-				
-				h1::before{
-					position: absolute;
-					content: "";
-					top: -12px;
-					left: 0px;
-					// width: 250px;
-					width: 100%;
-					height: 60px;
-					box-shadow: 3px 5px 8px 2px rgba(27, 75, 131, 0.781);
-					border-radius: 8px;
-					background-color: $buttonColor;
-					z-index: -1;
-				   }
-                   label{
-
-                    font-size: 1.9rem;
-                   }
-
-                   input{
-                    font-size: 1.6rem;
-					box-shadow: 2px 2px 5px 0px rgba(27, 75, 131, 0.781);
-
-                   }
-                   #register{
-                    width: 80%;
-					margin-top: 2em;
-					font-size: 1.9rem;
-					box-shadow: 2px 2px 10px 1px rgba(27, 75, 131, 0.781);
-
-                   }
-				   
-					.basic-info-names,.basic-info-contact,.password-box{
-						flex-direction: column;
-					}
-					.basic-info-data{
-						width: 100%;
-					}
-					.password-box-password{
-						width: 100%;
-						.info::before{
-							left: -170px;
-						}
-					}
-
-					.basic-info{
-						.basic-info-company{
-							flex-direction: column;
-							select{
-						box-shadow: 2px 2px 5px 1px rgba(27, 75, 131, 0.781);
-
-							}
-						}
-
-					}
-
-               }
-           }
-            
-        }
-    }
-}

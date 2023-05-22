@@ -179,15 +179,30 @@ const updateServiceProviders = () => {
 };
 
 const calendarSendBtn = document.querySelector('#send') as HTMLButtonElement;
+const hoursBtns = document.querySelectorAll('.hour-btn');
+let isTimeSelected = false;
 
 if (calendarSendBtn !== null) {
 	calendarSendBtn.addEventListener('click', () => {
 		const hoursBoxInfo = document.querySelector('.hours-container__info-span') as HTMLSpanElement;
-		if (hoursBoxInfo instanceof HTMLSpanElement && hoursBoxInfo.textContent !== null) {
-			localStorage.setItem('serviceDay', hoursBoxInfo.textContent);
+		isTimeSelected = false;
+		hoursBtns.forEach(btn => {
+			if (btn.classList.contains('active-hour-btn')) {
+				alert('Formularz został wysłany')
+				if (hoursBoxInfo instanceof HTMLSpanElement && hoursBoxInfo.textContent !== null) {
+					localStorage.setItem('serviceDay', hoursBoxInfo.textContent);
+					localStorage.setItem('serviceHour', btn.textContent!);
+					isTimeSelected = true;
+				}
+			}
+		});
+		if (!isTimeSelected) {
+			alert('Nie wybrano godziny')
 		}
 	});
 }
+
+
 
 let lastCheckedCheckbox: HTMLInputElement | null = null;
 

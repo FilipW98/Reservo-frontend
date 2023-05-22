@@ -7,7 +7,6 @@ const passwordLoginInput = document.querySelector('#password-login') as HTMLInpu
 
      
        const currentPassword =   localStorage.getItem('registerPassword');
-     console.log(currentPassword);
 
         loginBtn.addEventListener('click', (e) => {
             e.preventDefault()
@@ -24,7 +23,6 @@ const passwordLoginInput = document.querySelector('#password-login') as HTMLInpu
             if(regExEmail.test(emailLoginInput.value)){
                 emailLoginInput.classList.remove('red-input');
             }
-
             if(passwordLoginInput.value === currentPassword){
                 passwordLoginInput.classList.remove('red-input');
             }
