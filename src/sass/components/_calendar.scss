@@ -20,12 +20,8 @@
 .my-reservations {
 	height: 100vh;
 }
-
 .wrapper-calendar {
-	display: flex;
 	position: relative;
-	flex-direction: column;
-	justify-content: center;
 	margin: auto;
 	max-width: 750px;
 	z-index: 1;
@@ -46,7 +42,7 @@
 	}
 
 	.calendar-title {
-		font-size: 2rem;
+		// font-size: 2rem;
 		text-align: center;
 		background-color: $calendarCustomerTitleBgc;
 		border-top-left-radius: 8px;
@@ -75,11 +71,10 @@
 		cursor: pointer;
 	}
 	.fa-chevron-left:hover,
-	.fa-chevron-right:hover{
+	.fa-chevron-right:hover {
 		background-color: rgba(0, 0, 0, 0.129);
 		border-radius: 15px;
 	}
-
 }
 .calendar {
 	padding: 20px;
@@ -149,14 +144,6 @@
 	}
 }
 
-@media (max-width: 1200px) {
-	.calendar {
-		li {
-			font-size: 1.8rem;
-		}
-	}
-}
-
 @media (max-width: 992px) {
 	.wrapper-calendar {
 		width: 80%;
@@ -166,16 +153,6 @@
 @media (max-width: 768px) {
 	.wrapper-calendar {
 		width: 75%;
-		header {
-			padding: 10px 20px 0px;
-			padding: 1em 2em 0em 1em;
-		}
-		.calendar {
-			padding-top: 0.8em;
-			li {
-				margin-top: 20px;
-			}
-		}
 	}
 }
 
@@ -185,12 +162,6 @@
 	}
 	.wrapper-calendar {
 		width: 80%;
-		.calendar {
-			padding-top: 0.6em;
-			.days {
-				margin-bottom: 0.5em;
-			}
-		}
 	}
 }
 
@@ -200,14 +171,9 @@
 		.calendar-title {
 			h4 {
 				font-size: 2.2rem;
-				padding: 0.9em;
 			}
 		}
-		.calendar {
-			padding-top: 0em;
-		}
-
-		header{
+		header {
 			.icons {
 				margin-right: 1em;
 				#prev {
@@ -221,7 +187,6 @@
 @media (max-width: 380px) {
 	.wrapper-calendar {
 		width: 95%;
-
 		header {
 			padding-right: 1em;
 			margin-left: 0.5em;
@@ -235,7 +200,6 @@
 		.calendar-title {
 			h4 {
 				font-size: 2rem;
-				padding: 0.8em;
 			}
 		}
 	}

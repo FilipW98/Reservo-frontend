@@ -35,21 +35,13 @@
 	font-size: 2.2rem;
 
 	&__body {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
 		padding: 2.5em 2em 2em;
-
 		#company-street,
 		#company-home-number,
 		#company-city,
 		#company-code {
 			font-weight: bold;
 		}
-
-	}
-	a{
-		width: 100%;
 	}
 	#confirm-local{
 		@include customerBtn;
@@ -58,19 +50,12 @@
 	&__item {
 		margin-bottom: 1.4em;
 	}
-
-	&__street-box {
-		display: flex;
-	}
 }
 
 @media (max-width: 992px){
     .client-adress{
         margin-top: 2em;
         width: 55%;
-        label{
-            font-size: 1.8rem;
-        }
     }
     .company-adress{
         .company-adress__body{
@@ -90,16 +75,7 @@
 @media (max-width: 768px){
     .client-adress,.company-adress{
         width: 65%;
-        a{
-            width: 100%;
-        }
-        .submit-btn{
-            display: block;
-            @include customerBtn;
-            width: 45%;
-        }
     }
-
 
     .client-adress__body, .company-adress__body{
         padding: 2.2em 1em 1em;
@@ -110,9 +86,6 @@
     .client-adress,.company-adress{
         width: 75%;
     }
-    .company-adress__body{
-        padding: 2em 1em 1.5em;
-    }
 }
 
 @media (max-width: 480px) {
@@ -121,16 +94,8 @@
     }
 }
 
-
 @media (max-width: 380px) {
     .company-adress__body, .client-adress__body{
         font-size: 1.8rem;
-        padding: 1.5em .5em 1em;
-    }
-
-    .client-adress__body{
-        input{
-            margin: 0.7em 1em 2.5em 1em;
-        }
     }
 }
