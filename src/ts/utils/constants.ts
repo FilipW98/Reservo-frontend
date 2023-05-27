@@ -18,10 +18,12 @@ export const repeatInput = document.querySelector('#repeat') as HTMLInputElement
 export const termsInput = document.querySelector('#terms') as HTMLInputElement;
 export const termsBox = document.querySelector('.register-terms') as HTMLElement;
 export const termsError = document.createElement('p');
-
 export const select = document.createElement('select');
 export const companyEmail = document.createElement('input');
 export const companyInput = document.createElement('input');
+export const citySelect = document.createElement('select');
+citySelect.className = "input";
+citySelect.id = "citySelect";
 
 export const inputsArr = [
 	nameInput,
@@ -31,7 +33,9 @@ export const inputsArr = [
 	passwordInput,
 	repeatInput,
 	select,
+	citySelect,
 	providerName,
 	companyInput,
 	companyEmail,
 ];
+

@@ -1,5 +1,7 @@
 export {}
 
+import {citySelect} from "./constants"
+
 export const companyAdress = document.createElement('div');
 companyAdress.className = 'company-adress-login';
 
@@ -10,12 +12,21 @@ companyAdressTitle.innerText = 'Adres pocztowy firmy';
 const companyAdressPlace = document.createElement('div');
 companyAdressPlace.className = 'company-adress-place';
 
+const adressDiv = document.createElement('div');
+adressDiv.className = 'company-adress-data';
 
 export const adressFields = [
+	// { id: 'city', placeholder: 'Miasto',name: 'city'},
 	{ id: 'street', placeholder: 'Ulica', name: "street"},
 	{ id: 'home', placeholder: 'Nr.domu',name: 'home' },
-	{ id: 'city', placeholder: 'Miasto',name: 'city'},
 	{ id: 'code', placeholder: 'Kod pocztowy',name: 'code'},
+];
+
+export const citiesSelect = [
+	{ id: 'default', label: 'Wybierz miasto'},
+	{ id: 'wroclaw', label: 'Wrocław'},
+	{ id: 'warsaw', label: 'Warszawa'},
+	{ id: 'carcow', label: 'Kraków'},
 ];
 export const dataInputsCreator = (
 	registerBtn: HTMLButtonElement,
@@ -26,10 +37,28 @@ export const dataInputsCreator = (
 
 	const inputs: HTMLInputElement[] = [];
 
+
+	citiesSelect.forEach(option =>{
+		const cityOption = document.createElement('option');
+		cityOption.textContent = option.label;
+		cityOption.id = option.id;
+		console.log(cityOption.id);
+		if (cityOption.id === 'default') {
+			cityOption.disabled = true;
+			cityOption.selected = true;
+		}
+		citySelect.append(cityOption);
+	})
+	adressDiv.append(citySelect);
+	companyAdressPlace.append(adressDiv);
+	console.log(citySelect);
+
+
+
+
 	adressFields.forEach(field => {
 		const adressDiv = document.createElement('div');
 		let adressInput = document.createElement('input');
-
 		adressDiv.className = 'company-adress-data';
 		adressInput.className = 'input';
 		adressInput.type = 'text';
@@ -55,7 +84,6 @@ export const dataInputsCreator = (
 		}
 
 			if (registerBtn) {
-				
 				registerBtn.addEventListener('click', (e) => {
 					e.preventDefault()
 					let placeholderText = '';
@@ -94,17 +122,13 @@ export const dataInputsCreator = (
 				});
 			}
 			
-			
 			adressDiv.appendChild(adressInput);
 			companyAdressPlace.appendChild(adressDiv);
 			if (adressInput.id === 'home' || adressInput.id === 'code') {
 				adressInput.addEventListener('input', inputsEvents);
-			}
-			
-			
+			}			
 			inputs.push(adressInput)
 		});
-		
 		return { inputs };
 	};
 companyAdress.append(companyAdressTitle,companyAdressPlace);

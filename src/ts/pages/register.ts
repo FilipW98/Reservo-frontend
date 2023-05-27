@@ -11,6 +11,7 @@ import {
 	repeatInput,
 	companyInput,
 	select,
+	citySelect,
 	termsInput,
 	termsError,
 	termsBox,
@@ -151,14 +152,17 @@ const handleEvent = (e: Event) => {
 	if (e.type === 'input') {
 		if (
 			target.matches(
-				'#name, #provider-name, #surname, #number, #email, #email-company, #company-name, #password, #repeat, #phone, #city,#code,#home,#street'
+				'#name, #provider-name, #surname, #number, #email, #email-company, #company-name, #password, #repeat, #phone, #citySelect,#code,#home,#street'
 			)
 		) {
 			if (target instanceof HTMLInputElement) {
 				removeError(target);
 			}
 		}
-		if (target.matches('#services')) {
+		if (target.matches('#citySelect')) {
+			inputsEvents(e);
+		}
+		if (target.matches('#services')){
 			inputsEvents(e);
 		}
 	} else if (e.type === 'change') {
@@ -180,11 +184,10 @@ const handleEvent = (e: Event) => {
 };
 
 const inputs = dataInputsCreator(registerBtn!, toggleError, inputsEvents, checkCompanyInput);
-
 const streetInput = inputs.inputs[0];
+console.log(streetInput);
 const homeInput = inputs.inputs[1];
-const cityInput = inputs.inputs[2];
-const codeInput = inputs.inputs[3];
+const codeInput = inputs.inputs[2];
 
 document.addEventListener('DOMContentLoaded', function () {
 	document.addEventListener('input', handleEvent);
@@ -196,7 +199,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		registerBtn.addEventListener('click', inputsValidation);
 		registerBtn.addEventListener('click', () => {
 			const selectElement = document.getElementById('services') as HTMLSelectElement;
-
 			if (selectElement !== null) {
 				const selectedOptionValue = selectElement.options[selectElement.selectedIndex].value;
 				localStorage.setItem('selectedOption', selectedOptionValue);
@@ -209,8 +211,11 @@ document.addEventListener('DOMContentLoaded', function () {
 				localStorage.setItem('customerName', nameInput.value);
 			}
 			if (checkCompanyInput.checked) {
+				if(citySelect){
+					const selectedCityValue = citySelect.options[citySelect.selectedIndex].value;
+					localStorage.setItem('companyCity', selectedCityValue);
+				}
 				localStorage.setItem('providerName', providerName.value);
-				localStorage.setItem('companyCity', cityInput.value);
 				localStorage.setItem('companyStreet', streetInput.value);
 				localStorage.setItem('companyHome', homeInput.value);
 				localStorage.setItem('companyCode', codeInput.value);
@@ -221,7 +226,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		});
 	}
 
-	const adressInputsArr = [streetInput, homeInput, cityInput, codeInput];
+	const adressInputsArr = [streetInput, homeInput, citySelect, codeInput];
 	const inputsArrCompany = [
 		surnameInput,
 		numberInput,

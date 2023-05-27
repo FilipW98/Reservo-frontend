@@ -11,6 +11,7 @@ import {
 	repeatInput,
 	companyInput,
 	select,
+	citySelect,
 } from '../utils/constants';
 import { termsInput, termsError, termsBox } from '../utils/constants';
 import { toggleError } from './toggle-error';
@@ -48,6 +49,9 @@ export const inputsValidation = () => {
 	}
 	if (select.value === 'default') {
 		select.classList.add('red-input');
+	}
+	if(citySelect.value === "Wybierz miasto"){
+		citySelect.classList.add('red-input');
 	}
 	termsCheckboxCheck();
 };

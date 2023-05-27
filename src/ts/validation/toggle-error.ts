@@ -5,7 +5,7 @@ export const toggleError = (input: HTMLInputElement, isError: boolean, placehold
 		input.setAttribute('placeholder', placeholderText ?? 'Musisz podać jakąś wartość');
 		input.classList.add('red-input');
 		input.classList.add('red-placeholder');
-	} else if (input.id === 'street' || input.id === 'home' || input.id === 'code' || input.id === 'city') {
+	} else if (input.id === 'street' || input.id === 'home' || input.id === 'code') {
 		input.setAttribute('placeholder', placeholderText ?? 'Musisz podać wartość');
 		input.classList.remove('red-input');
 		input.classList.remove('red-placeholder');
