@@ -11,8 +11,7 @@ This project is intended both for people looking for a specific service (custome
 
 
 
-##   <div align="center" ><a href="https://myreservo.github.io/Reservo-frontend/" target="_blank" rel="noreferrer"> <img src="./assets/img/live-icon.png" alt="live icon" width="100" height="50" /> </a>  </div>
-
+##   <div align="center" ><a href="https://myreservo.github.io/Reservo-frontend/" target="_blank" rel="noreferrer"> <img src="./assets/img/live-icon.png" alt="live icon" width="95" height="45" /> </a>  </div>
 
 
 
