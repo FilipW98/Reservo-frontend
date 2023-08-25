@@ -6,7 +6,7 @@
 
 
 <div align="center">
-This project is intended both for people looking for a specific service (customers) and for people who run a business and want to acquire customers. With the right backend, this app would allow the customer to book an appointment at a specific time and place. On the other hand, people providing services have access to a calendar in their panel, which could display the days on which they have an appointment with the client to perform their service. Keep in mind that the app is not finished, I'm still working on it.
+This project is intended both for people looking for a specific service (customers) and for people who run a business and want to acquire customers. With the right backend, this app would allow the customer to book an appointment at a specific time and place. On the other hand, people providing services have access to a calendar in their panel, which could display the days on which they have an appointment with the client to perform their service.
 </div>
 
 
@@ -31,7 +31,7 @@ This project is intended both for people looking for a specific service (custome
 - Registration as a customer and as a person providing services
 - Login - Thanks to local storage, after successful registration, you can log out and then log in using the same e-mail address and password that you provided during registration
 - Responsive Web Design
-- This app is tested with Cypress (full test will be written soon)
+- This app is tested with Cypress 
 
 
 ## Installation
